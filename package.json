@@ -2,7 +2,7 @@
   "main": "index.js",
   "scripts": {
     "android": "react-native run-android",
-    "podinstall": "cd ios && pod install && cd -",
+    "podinstall": "cd ios && pod install --repo-update && cd -",
     "ios": "npm run podinstall && react-native run-ios",
     "web": "expo start --web",
     "xcode": "open ./ios/Mobileflashcardapp.xcworkspace || open ./ios/Mobileflashcardapp.xcodeproj",
@@ -15,6 +15,7 @@
   "dependencies": {
     "@react-native-community/masked-view": "0.1.10",
     "@react-navigation/bottom-tabs": "5.11.8",
+    "@react-navigation/drawer": "^5.12.4",
     "@react-navigation/native": "^5.0.5",
     "@react-navigation/stack": "5.14.3",
     "bufferutil": "^4.0.1",
@@ -24,21 +25,21 @@
     "expo-status-bar": "~1.0.3",
     "expo-updates": "~0.4.0",
     "jsdom": "16.4.0",
-    "prop-types": "^15.7.2",
-    "react": "^16.0",
+    "react": "^16.14.0",
     "react-dom": "16.13.1",
-    "react-native": ">=0.57",
-    "react-native-gesture-handler": "1.0.0",
+    "react-native": "^0.58.4",
+    "react-native-gesture-handler": "1.0.0-alpha.29",
     "react-native-reanimated": "~1.13.0",
     "react-native-safe-area-context": "0.6.0",
     "react-native-screens": "2.0.0",
+    "react-native-splash-screen": "^3.2.0",
     "react-native-unimodules": "~0.12.0",
     "react-native-web": "~0.13.12",
     "utf-8-validate": "^5.0.2",
     "ws": "7.4.3"
   },
   "devDependencies": {
-    "@babel/core": "~7.9.0",
+    "@babel/core": "^7.9.6",
     "babel-jest": "~25.2.6",
     "jest": "~25.2.6",
     "react-test-renderer": "~16.13.1"

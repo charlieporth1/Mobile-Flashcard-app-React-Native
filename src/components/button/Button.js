@@ -12,7 +12,7 @@ const Button = ({style, ...props}) => {
             {...props}
             style={[!style ? styles : style]}
         >
-            <View style={}>{props.children}</View>
+            <View style={[!style ? styles : style]}>{props.children}</View>
         </TouchableOpacity>
     );
 };

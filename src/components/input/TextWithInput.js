@@ -6,7 +6,6 @@ import {
   Text,
 } from 'react-native';
 
-import PropTypes from "prop-types";
 function getPlaceholderStyle(props) {
   return props.value ? {} : styles.placeholderFont;
 }
@@ -63,12 +62,4 @@ const styles = StyleSheet.create({
     backgroundColor: 'red',
   },
 });
-PropTypes.TextWithInput = {
-  autoCorrect:PropTypes.bool,
-  spellCheck: PropTypes.bool,
-  value:PropTypes.string.isRequired,
-  placeholder:PropTypes.string.isRequired,
-  maxLength:PropTypes.number,
-
-};
 export default TextWithInput;

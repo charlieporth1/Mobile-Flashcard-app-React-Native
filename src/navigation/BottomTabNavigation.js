@@ -1,12 +1,12 @@
 import React from 'react';
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
+import {MainStackNavigator} from "./AppNavigation";
 const Tab = createBottomTabNavigator();
-function NavBar() {
+const BottomTabNavigation = () => {
     return (
         <Tab.Navigator>
-            <Tab.Screen name="Home" component={HomeScreen} />
-            <Tab.Screen name="Settings" component={SettingsScreen} />
+            <Tab.Screen name="Home" component={MainStackNavigator} />
         </Tab.Navigator>
     );
-}
-export default NavBar;
+};
+export default BottomTabNavigation;
