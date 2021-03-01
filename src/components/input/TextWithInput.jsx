@@ -6,29 +6,30 @@ import {
   Text,
 } from 'react-native';
 
-
+import PropTypes from "prop-types";
 function getPlaceholderStyle(props) {
   return props.value ? {} : styles.placeholderFont;
 }
 
 const TextWithInput = ({ style, ...props }) => {
-  const { autoCorrect = false, spellCheck = false, value } = props;
+  const { autoCorrect = false, spellCheck = false, value, placeholder, maxLength, onChange } = props;
 
   return (
     <View style={styles.maxWidth}>
       {value ? (
-        <Text style={styles.title}>{props.placeholder}</Text>
+        <Text style={styles.title}>{placeholder}</Text>
       ) : (
         <Text style={{ height: 35 }} />
       )}
       <TextInput
-        maxLength={props.maxLength}
+        maxLength={maxLength}
         {...props}
-        style={[styles.input, style, getPlaceholderStyle(props), ...elkoStyles]}
-        placeholder={props.placeholder}
-        placeholderTextColor={styleConstants.colors.TOS_BODY_COPY}
+        style={[styles.input, style, getPlaceholderStyle(props)]}
+        placeholder={placeholder}
+        placeholderTextColor='gray'
         autoCorrect={spellCheck}
         spellCheck={autoCorrect}
+        onChangeText={(text)=> onChange(text)}
       />
     </View>
   );
@@ -62,5 +63,12 @@ const styles = StyleSheet.create({
     backgroundColor: 'red',
   },
 });
+PropTypes.TextWithInput = {
+  autoCorrect:PropTypes.bool,
+  spellCheck: PropTypes.bool,
+  value:PropTypes.string.isRequired,
+  placeholder:PropTypes.string.isRequired,
+  maxLength:PropTypes.number,
 
+};
 export default TextWithInput;
