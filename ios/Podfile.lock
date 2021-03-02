@@ -290,8 +290,8 @@ PODS:
     - React-jsi (= 0.63.4)
   - RNCMaskedView (0.1.10):
     - React
-  - RNGestureHandler (1.0.0):
-    - React
+  - RNGestureHandler (1.10.3):
+    - React-Core
   - RNReanimated (1.13.2):
     - React-Core
   - RNScreens (2.0.0):
@@ -360,7 +360,7 @@ DEPENDENCIES:
   - React-RCTVibration (from `../node_modules/react-native/Libraries/Vibration`)
   - ReactCommon/turbomodule/core (from `../node_modules/react-native/ReactCommon`)
   - "RNCMaskedView (from `../node_modules/@react-native-community/masked-view`)"
-  - RNGestureHandler (from `../node_modules/react-native-gesture-handler/ios`)
+  - RNGestureHandler (from `../node_modules/react-native-gesture-handler`)
   - RNReanimated (from `../node_modules/react-native-reanimated`)
   - RNScreens (from `../node_modules/react-native-screens`)
   - UMAppLoader (from `../node_modules/unimodules-app-loader/ios`)
@@ -468,7 +468,7 @@ EXTERNAL SOURCES:
   RNCMaskedView:
     :path: "../node_modules/@react-native-community/masked-view"
   RNGestureHandler:
-    :path: "../node_modules/react-native-gesture-handler/ios"
+    :path: "../node_modules/react-native-gesture-handler"
   RNReanimated:
     :path: "../node_modules/react-native-reanimated"
   RNScreens:
@@ -546,7 +546,7 @@ SPEC CHECKSUMS:
   React-RCTVibration: ae4f914cfe8de7d4de95ae1ea6cc8f6315d73d9d
   ReactCommon: 73d79c7039f473b76db6ff7c6b159c478acbbb3b
   RNCMaskedView: f5c7d14d6847b7b44853f7acb6284c1da30a3459
-  RNGestureHandler: c16f8375e69ec32545f8f617fdfef6e002f3a572
+  RNGestureHandler: a479ebd5ed4221a810967000735517df0d2db211
   RNReanimated: e03f7425cb7a38dcf1b644d680d1bfc91c3337ad
   RNScreens: 7704297930777dae13b88bb9f999db17a39bbdf1
   UMAppLoader: 515d02d30e29cf05bbe58f77c59f896840cc5895
@@ -564,6 +564,6 @@ SPEC CHECKSUMS:
   UMTaskManagerInterface: eee33176282a16e6348aabcbe89ebd363e69f9cb
   Yoga: 4bd86afe9883422a7c4028c00e34790f560923d6
 
-PODFILE CHECKSUM: 390999554721a227943f22dbbcf57ba92ec2dc52
+PODFILE CHECKSUM: 5a1c662028e4463fa4bdc6d9920f9eb22b133a6c
 
 COCOAPODS: 1.10.1
