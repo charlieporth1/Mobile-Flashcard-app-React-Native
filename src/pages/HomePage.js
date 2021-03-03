@@ -6,14 +6,16 @@ import {
 import DeckStack from "../components/deck/deck";
 import {mapStateToProps} from "../stores/Store";
 import { connect } from 'react-redux';
+import {selectDeck} from "../stores/DeckStore";
+import {bindActionCreators} from "redux";
 
 class Home extends Component {
     render() {
-        const { decks } = this.props;
+        const { decks, navigation, actions } = this.props;
         return (
             <View>
                 {decks.length > 0 ? decks.map((deck) => {
-                        return <DeckStack cardCount={deck.cards.length} deckNumber={deck.id}/>
+                        return <DeckStack actions={actions} navigation={navigation} cardCount={deck.cards.length} id={deck.id}/>
                     }) :
                     <Text>Zero decks added</Text>
                 }
@@ -22,5 +24,11 @@ class Home extends Component {
     }
 }
 
-
-export default connect(mapStateToProps)(Home)
+const ActionCreators = Object.assign(
+    {},
+    {selectDeck},
+);
+const mapDispatchToProps = dispatch => ({
+    actions: bindActionCreators(ActionCreators, dispatch),
+});
+export default connect(mapStateToProps, mapDispatchToProps)(Home)

@@ -4,17 +4,23 @@ import {
     Text, StyleSheet,
 } from 'react-native';
 import {padding} from "../../utils/utils";
+import Button from "../button/Button";
 
-const DeckStack = ({deckNumber, cardCount}) => {
+const DeckStack = ({navigation, id, cardCount, actions}) => {
+    const onClick = () => {
+        actions.selectDeck(id);
+        setTimeout(() => navigation.push('ViewDeck'), 100)
+    };
+
     return (
-        <View style={{...styles.containerView}}>
+        <Button onPress={onClick} style={{...styles.containerView}}>
             <View style={{...styles.maxWidth, ...styles.block, backgroundColor: 'blue'}}>
-                <Text stlye={{color: '#FFF'}}>Deck {deckNumber}</Text>
+                <Text stlye={{color: '#FFF'}}>Deck {id}</Text>
             </View>
             <View style={{...styles.maxWidth, ...styles.block, backgroundColor: 'white'}}>
                 <Text>{cardCount} Cards</Text>
             </View>
-        </View>
+        </Button>
     );
 };
 const styles = StyleSheet.create({
@@ -39,4 +45,5 @@ const styles = StyleSheet.create({
         opacity: 1.0,
     },
 });
+
 export default DeckStack;

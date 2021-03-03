@@ -1,3 +1,5 @@
 const NEW_DECK = "newDeck";
 const NEW_DECK_NAME = 'newDeckName';
-export {NEW_DECK, NEW_DECK_NAME}
+const SELECT_DECK = 'SELECT_DECK';
+const CURRENT_DECK = 'CURRENT_DECK';
+export {NEW_DECK, NEW_DECK_NAME, SELECT_DECK, CURRENT_DECK}

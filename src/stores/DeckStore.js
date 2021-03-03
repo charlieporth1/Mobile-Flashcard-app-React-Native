@@ -1,7 +1,7 @@
 import DeckModel from "../models/DeckModel";
-import {NEW_DECK, NEW_DECK_NAME} from "../static/constants";
+import {NEW_DECK, NEW_DECK_NAME, CURRENT_DECK, SELECT_DECK} from "../static/constants";
 
-export function deckReducer(state = {decks: [], newDeckName: ''}, action) {
+export function deckReducer(state = {decks: [], newDeckName: '', currentDeck: new DeckModel()}, action) {
     console.log(action);
     switch (action.type) {
         case NEW_DECK:
@@ -13,6 +13,9 @@ export function deckReducer(state = {decks: [], newDeckName: ''}, action) {
         case NEW_DECK_NAME:
             const {newDeckName} = action.payload;
             return {newDeckName, ...state};
+        case SELECT_DECK:
+            const {deckId} = action.payload;
+            return {currentDeck: state.decks[deckId], ...state};
         default:
             return state
     }
@@ -29,6 +32,12 @@ export function newDeckName (newDeckName) {
     return {
         type: NEW_DECK_NAME,
         payload: newDeckName
+    }
+}
+export function selectDeck (deckId:number) {
+    return {
+        type: SELECT_DECK,
+        payload: deckId,
     }
 }
 // decrementCount() {

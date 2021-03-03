@@ -4,15 +4,16 @@ import {
     TouchableOpacity,
     StyleSheet,
 } from 'react-native';
+import {padding} from "../../utils/utils";
 
 
 const Button = ({style, ...props}) => {
     return (
         <TouchableOpacity
             {...props}
-            style={[!style ? styles : style]}
+            style={[(!style ? styles.button : style)]}
         >
-            <View style={[!style ? styles : style]}>{props.children}</View>
+            <View style={[(!style ? styles.button : style)]}>{props.children}</View>
         </TouchableOpacity>
     );
 };
@@ -21,11 +22,11 @@ export default Button;
 
 const styles = StyleSheet.create({
     button: {
-        width: '100%',
-        height: 50,
-        backgroundColor: 'blue',
+        ...padding(10, 7, 0, 0),
+        backgroundColor: '#0FAFFF',
         justifyContent: 'center',
         alignItems: 'center',
-        marginVertical: 50,
+        borderRadius: 10,
+        marginTop:25
     },
 });

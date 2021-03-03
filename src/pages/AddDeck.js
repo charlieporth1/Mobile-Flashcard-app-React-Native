@@ -35,7 +35,7 @@ const ActionCreators = Object.assign(
     {},
     {newDeck, newDeckName},
 );
-export const mapDispatchToProps = dispatch => ({
+const mapDispatchToProps = dispatch => ({
     actions: bindActionCreators(ActionCreators, dispatch),
 });
 
