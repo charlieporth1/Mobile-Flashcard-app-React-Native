@@ -13,9 +13,9 @@ import {bindActionCreators} from "redux";
 class ViewDeck extends Component {
 
     render(): React.ReactElement<any> | string | number | {} | React.ReactNodeArray | React.ReactPortal | boolean | null | undefined {
-        const { currentDeck } = this.props;
+        const { currentDeck, navigation } = this.props;
         return (<View>
-            <Button><Text>Add Card</Text></Button>
+            <Button onPress={()=> navigation.push('AddCards')}><Text>Add Card</Text></Button>
             <Button><Text>Start Quiz</Text></Button>
             <Button><Text>Delete Deck</Text></Button>
         </View>);

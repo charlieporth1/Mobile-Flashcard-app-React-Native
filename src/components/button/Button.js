@@ -7,10 +7,10 @@ import {
 import {padding} from "../../utils/utils";
 
 
-const Button = ({style, ...props}) => {
+const Button = ({style, onPress = ()=> {}, ...props}) => {
     return (
         <TouchableOpacity
-            {...props}
+            onPress={onPress}
             style={[(!style ? styles.button : style)]}
         >
             <View style={[(!style ? styles.button : style)]}>{props.children}</View>
