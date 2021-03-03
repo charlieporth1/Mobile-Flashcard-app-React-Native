@@ -6,12 +6,11 @@ import {
   Text,
 } from 'react-native';
 
-function getPlaceholderStyle(props) {
-  return props.value ? {} : styles.placeholderFont;
+function getPlaceholderStyle(value) {
+  return value ? {} : styles.placeholderFont;
 }
 
-const TextWithInput = ({ style, ...props }) => {
-  const { autoCorrect = false, spellCheck = false, value, placeholder, maxLength, onChange } = props;
+const TextWithInput = ({ style = {}, value = '', placeholder = '', onChange = ()=> {}, maxLength = 35 }) => {
 
   return (
     <View style={styles.maxWidth}>
@@ -22,12 +21,11 @@ const TextWithInput = ({ style, ...props }) => {
       )}
       <TextInput
         maxLength={maxLength}
-        {...props}
-        style={[styles.input, style, getPlaceholderStyle(props)]}
+        style={[styles.input, style, getPlaceholderStyle(value)]}
         placeholder={placeholder}
         placeholderTextColor='gray'
-        autoCorrect={spellCheck}
-        spellCheck={autoCorrect}
+        autoCorrect={false}
+        spellCheck={false}
         onChangeText={(text)=> onChange(text)}
       />
     </View>
@@ -54,7 +52,7 @@ const styles = StyleSheet.create({
   },
   title: {
     color: 'black',
-    fontSize: '15',
+    fontSize: 15,
     marginTop: 20,
     marginLeft: 10,
   },

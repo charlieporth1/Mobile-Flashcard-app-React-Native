@@ -2,6 +2,7 @@ import React from "react";
 import MainPage from "../pages/HomePage";
 import {createStackNavigator} from "@react-navigation/stack";
 import AddDeck from "../pages/AddDeck";
+
 const screenOptionStyle = {
     headerStyle: {
         backgroundColor: "#9AC4F8",
@@ -13,9 +14,15 @@ const Stack = createStackNavigator();
 const MainStackNavigator = () => {
     return (
         <Stack.Navigator screenOptions={screenOptionStyle}>
-            <Stack.Screen name="Home" component={MainPage} />
-            <Stack.Screen name="Add Deck" component={AddDeck} />
+            <Stack.Screen name="Home" component={MainPage}/>
         </Stack.Navigator>
     );
 };
-export {MainStackNavigator, }
+const AddDeckStack = () => {
+    return (
+        <Stack.Navigator screenOptions={screenOptionStyle}>
+            <Stack.Screen name="Add Deck" component={AddDeck}/>
+        </Stack.Navigator>
+    );
+};
+export {MainStackNavigator, AddDeckStack}

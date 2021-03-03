@@ -1,18 +1,18 @@
 import CardModel from "./CardModel";
 
 export default class DeckModel {
-    deckNumber:number = 0;
-    deckName:string = '';
+    id:number = 0;
+    name:string = '';
     cards:CardModel[] = [];
 
     constructor(param: Partial<DeckModel>) {
         const {
-            deckNumber = 0,
-            deckName = 'Deck',
+            id = 0,
+            name = 'Deck',
             cards = []
         } = param;
-        this.deckNumber = deckNumber;
-        this.deckName = deckName;
+        this.id = id;
+        this.name = name;
         this.cards = cards;
     }
 }

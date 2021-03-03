@@ -8,7 +8,7 @@ import Button from "../components/button/Button";
 
 const ViewDeck = ({navigation, deck}) => {
         return (<View>
-            <DeckStack cardCount={deck.cards.length} deckNumber={deck.deckNumber}/>
+            <DeckStack cardCount={deck.cards.length} deckNumber={deck.id}/>
             <Button><Text>Add Card</Text></Button>
             <Button><Text>Start Quiz</Text></Button>
             <Button><Text>Delete Deck</Text></Button>
