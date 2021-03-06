@@ -4,6 +4,7 @@ import {createStackNavigator} from "@react-navigation/stack";
 import AddDeck from "../pages/AddDeck";
 import ViewDeck from "../pages/ViewDeck";
 import AddCards from "../pages/AddCards";
+import ViewQuestionPage from "../pages/ViewQuestionPage";
 
 const screenOptionStyle = {
     headerStyle: {
@@ -19,6 +20,7 @@ const MainStackNavigator = () => {
             <Stack.Screen name="Home" component={MainPage}/>
             <Stack.Screen name="ViewDeck" component={ViewDeck}/>
             <Stack.Screen name="AddCards" component={AddCards}/>
+            <Stack.Screen name="ViewQuestionPage" component={ViewQuestionPage}/>
         </Stack.Navigator>
     );
 };

@@ -3,16 +3,19 @@
   "scripts": {
     "android": "react-native run-android",
     "podinstall": "cd ios && pod install --repo-update && cd -",
-    "ios": "npm run podinstall && react-native run-ios",
-    "web": "expo start --web",
+    "ios": "yarn run podinstall && expo start --ios  --localhost --config app.json --clear ",
+    "web": "expo start --web --localhost",
     "xcode": "open ./ios/Mobileflashcardapp.xcworkspace || open ./ios/Mobileflashcardapp.xcodeproj",
-    "start": "react-native start --reset-cache",
+    "start:native": "react-native start --reset-cache",
+    "start": "expo start --clear ",
     "clean:xcode": "rm -rf ~/Library/Developer/Xcode/DerivedData/ && cd ios && rm -rf Pods/ && cd ..",
-    "clean": "npm run clean:xcode && rm -rf node_modules/",
-    "clean-start": "npm run clean && npm i && npm start",
+    "clean:metro": "watchman watch-del-all && rm -rf /tmp/metro-*",
+    "clean": "yarn run clean:metro && yarn run clean:xcode && rm -rf node_modules/",
+    "clean-start": "yarn run clean && yarn install && yarn start",
     "test": "jest"
   },
   "dependencies": {
+    "@react-native-community/async-storage": "^1.12.1",
     "@react-native-community/masked-view": "0.1.10",
     "@react-navigation/bottom-tabs": "5.11.8",
     "@react-navigation/drawer": "^5.3.0",
@@ -22,6 +25,10 @@
     "babel-preset-expo": "^8.3.0",
     "bufferutil": "^4.0.1",
     "canvas": "^2.5.0",
+    "expo": "^40.0.1",
+    "expo-splash-screen": "~0.8.1",
+    "expo-status-bar": "^1.0.3",
+    "expo-updates": "^0.4.2",
     "jsdom": "16.4.0",
     "react": "~16.13.1",
     "react-dom": "~16.9.0",
@@ -29,14 +36,17 @@
     "react-native-gesture-handler": "^1.5.6",
     "react-native-pod": "^1.12.1",
     "react-native-reanimated": "~1.13.0",
-    "react-native-safe-area-context": "0.6.0",
-    "react-native-screens": "2.0.0",
+    "react-native-safe-area-context": "3.1.9",
+    "react-native-screens": "~2.15.2",
+    "react-native-splash-screen": "^3.2.0",
     "react-native-unimodules": "~0.12.0",
     "react-native-web": "~0.13.7",
     "react-redux": "^7.2.2",
     "redux": "^4.0.5",
+    "redux-persist": "^6.0.0",
     "utf-8-validate": "^5.0.2",
-    "ws": "7.4.3"
+    "ws": "7.4.3",
+    "redux-thunk": "latest"
   },
   "devDependencies": {
     "@babel/core": "^7.9.6",
@@ -44,7 +54,8 @@
     "jest": "~25.2.6",
     "metro-react-native-babel-preset": "~0.56.0",
     "metro-react-native-babel-transformer": "^0.65.1",
-    "react-test-renderer": "~16.13.1"
+    "react-test-renderer": "~16.13.1",
+    "redux-logger": "^3.0.6"
   },
   "jest": {
     "preset": "react-native"

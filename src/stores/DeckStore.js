@@ -1,8 +1,8 @@
 import DeckModel from "../models/DeckModel";
-import {NEW_DECK, NEW_DECK_NAME, CURRENT_DECK, SELECT_DECK, ADD_CARD} from "../static/constants";
 import CardModel from "../models/CardModel";
+import {NEW_DECK, NEW_DECK_NAME, CURRENT_DECK, SELECT_DECK, ADD_CARD} from "../static/constants";
 
-export function deckReducer(state = {decks: [], newDeckName: '', currentDeck: new DeckModel()}, action) {
+export function deckReducer(state = {decks: [], newDeckName: '', currentDeck: null}, action) {
     console.log(action);
     switch (action.type) {
         case NEW_DECK:
@@ -10,18 +10,20 @@ export function deckReducer(state = {decks: [], newDeckName: '', currentDeck: ne
             const name = state.newDeckName;
             const decks = state.decks;
             decks.push(new DeckModel({id, name, cards: []}));
-            return {decks, ...state};
+            return {decks};
         case NEW_DECK_NAME:
             const {newDeckName} = action.payload;
-            return {newDeckName, ...state};
+            return {newDeckName};
         case SELECT_DECK:
             const {deckId} = action.payload;
-            return {currentDeck: state.decks[deckId], ...state};
+            console.log("decks",decks);
+            return {currentDeck: state.decks[deckId]};
         case ADD_CARD:
             const {question, answer} = action.payload;
             const currentDeck = state.currentDeck;
-            currentDeck.cards.push(new CardModel({question, answer}));
-            return {currentDeck, ...state};
+            console.log("currentDeck, decks", currentDeck, decks);
+                currentDeck.cards = [...(currentDeck.cards || []), new CardModel({question, answer})];
+            return {currentDeck};
         default:
             return state
     }

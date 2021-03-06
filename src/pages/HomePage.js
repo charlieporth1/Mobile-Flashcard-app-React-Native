@@ -11,11 +11,11 @@ import {bindActionCreators} from "redux";
 
 class Home extends Component {
     render() {
-        const { decks, navigation, actions } = this.props;
+        const { decks = [], navigation, actions } = this.props;
         return (
             <View>
                 {decks.length > 0 ? decks.map((deck) => {
-                        return <DeckStack actions={actions} navigation={navigation} cardCount={deck.cards.length} id={deck.id}/>
+                        return <DeckStack key={deck.id} actions={actions} navigation={navigation} cardCount={deck.cards.length} id={deck.id}/>
                     }) :
                     <Text>Zero decks added</Text>
                 }

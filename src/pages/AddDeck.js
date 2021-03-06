@@ -9,7 +9,7 @@ import {mapStateToProps} from "../stores/Store";
 
 class AddDeck extends Component {
     onChangeAddDeck = (name) => {
-        const {decks, actions} = this.props;
+        const {decks = [], actions} = this.props;
         const id = (decks.pop() || {id: -1}).id + 1 || 0;
         actions.newDeck(id, name);
     };
