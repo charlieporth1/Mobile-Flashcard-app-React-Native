@@ -1,7 +1,9 @@
-import {AppRegistry} from 'react-native';
+import React from "react";
+import { AppRegistry, Platform } from 'react-native';
 import App from './src/App';
 import {registerRootComponent} from "expo";
-import React from "react";
+
+import * as app from './app.json';
 
 
 // registerRootComponent calls AppRegistry.registerComponent('main', () => App);
@@ -10,4 +12,9 @@ import React from "react";
 // AppRegistry.registerComponent('main', () => App);
 
 
-registerRootComponent(App);
+AppRegistry.registerComponent(app.name, () => App);
+
+if (Platform.OS === 'web') {
+    const rootTag = document.getElementById('root') || document.getElementById('main');
+    AppRegistry.runApplication(app.name, { rootTag });
+}

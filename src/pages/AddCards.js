@@ -25,7 +25,7 @@ class AddCards extends Component {
         const {actions, navigation} = this.props;
         const {answer, question} = this.state;
         actions.addCards(question,answer);
-        navigation.push('ViewDeck')
+        navigation.navigate('ViewDeck')
 
     };
 

@@ -9,7 +9,6 @@ const App = () => {
     return (
         <Provider store={store}>
             <NavigationContainer>
-                <StatusBar/>
                 <BottomTabNavigation/>
             </NavigationContainer>
         </Provider>);

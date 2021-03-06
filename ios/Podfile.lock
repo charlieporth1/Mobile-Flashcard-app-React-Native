@@ -31,7 +31,7 @@ PODS:
     - UMPermissionsInterface
   - EXSecureStore (9.3.0):
     - UMCore
-  - EXSplashScreen (0.8.1):
+  - EXSplashScreen (0.9.0):
     - React-Core
     - UMCore
   - EXSQLite (8.5.0):
@@ -516,7 +516,7 @@ SPEC CHECKSUMS:
   EXLocation: 5689bbf163581eefb70978130611ec25d027bcf3
   EXPermissions: 55cadfd11547c07a5390ba7eea63bd998a71018d
   EXSecureStore: 7cda998bd7c150b28021cb9c85b0747daa6a5ab5
-  EXSplashScreen: 5bd1d445b1c5fc883fa2f5612633defc48759273
+  EXSplashScreen: 1d97ad60f1bbe461c99229f5245a3b529cb30cb2
   EXSQLite: 98f4062e567a2facc80aa6a064be88fa1a9476b6
   EXUpdates: 060bc885bc697acaf3b0a4606508ce909d91571d
   FBLazyVector: 3bb422f41b18121b71783a905c10e58606f7dc3e

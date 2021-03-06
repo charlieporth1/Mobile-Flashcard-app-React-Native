@@ -9,7 +9,7 @@ import Button from "../button/Button";
 const DeckStack = ({navigation, id, cardCount, actions}) => {
     const onClick = () => {
         actions.selectDeck(id);
-        setTimeout(() => navigation.push('ViewDeck'), 100)
+        setTimeout(() => navigation.navigate('ViewDeck'), 100)
     };
 
     return (
