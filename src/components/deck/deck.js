@@ -13,7 +13,8 @@ import {bindActionCreators} from "redux";
 const DeckStack = ({navigation, id, cardCount, onClickAction}) => {
     const onClick = () => {
         onClickAction();
-        navigation.navigate('ViewDeck')
+        setTimeout(()=> navigation.navigate('ViewDeck'),100);
+
     };
 
     return (

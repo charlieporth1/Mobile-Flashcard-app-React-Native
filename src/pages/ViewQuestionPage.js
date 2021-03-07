@@ -6,6 +6,7 @@ import {
 import {connect} from "react-redux";
 import {mapStateToProps} from "../stores/Store";
 import Button from "../components/button/Button";
+import {randomNumber} from "../utils/utils";
 
 class ViewQuestionPage extends Component {
     state = {
@@ -18,14 +19,18 @@ class ViewQuestionPage extends Component {
     render() {
         const {currentDeck} = this.props;
         const {isViewAnswer} = this.state;
-        console.log("currentDeck", currentDeck);
-        const currentCard = (currentDeck.cards || []).pop();
-        console.log("currentCard", currentCard);
-        return <View>
-            <Text>{currentCard.question}</Text>
-            <Button onPress={this.toggleViewAnswer}><Text>Click to view Answer</Text></Button>
-            {isViewAnswer ? <Text>{currentCard.answer}</Text> : undefined}
-        </View>;
+        const cards = currentDeck.cards || [];
+        if (cards.length > 0) {
+            const index  = randomNumber(0, cards.length - 1);
+            const currentCard = cards[index];
+            return <View>
+                <Text>{currentCard.question}</Text>
+                <Button onPress={this.toggleViewAnswer}><Text>Click to view Answer</Text></Button>
+                {isViewAnswer ? <Text>{currentCard.answer}</Text> : undefined}
+            </View>;
+        } else {
+            return <View><Text>This deck has {cards.length} cards in it</Text></View>
+        }
     }
 }
 

@@ -15,7 +15,11 @@ class Home extends Component {
         return (
             <View>
                 {decks.length > 0 ? decks.map((deck) => {
-                        return <DeckStack key={deck.id} onClickAction={()=>this.onClick(deck.id)} navigation={navigation} cardCount={deck.cards.length} id={deck.id}/>
+                        return <DeckStack key={deck.id}
+                                          onClickAction={()=>this.onClick(deck.id)}
+                                          navigation={navigation}
+                                          cardCount={deck.cards.length}
+                                          id={deck.id}/>
                     }) :
                     <Text>Zero decks added</Text>
                 }

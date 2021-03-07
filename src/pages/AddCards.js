@@ -1,7 +1,7 @@
 import React, {Component} from "react";
 import {
     View,
-    Text,
+    Text, Alert,
 } from 'react-native';
 import TextWithInput from "../components/input/TextWithInput";
 import {addCards} from "../stores/DeckStore";
@@ -25,6 +25,7 @@ class AddCards extends Component {
         const {actions, navigation} = this.props;
         const {answer, question} = this.state;
         actions.addCards(question,answer);
+        Alert.alert("Successfully added card");
         navigation.navigate('ViewDeck')
 
     };

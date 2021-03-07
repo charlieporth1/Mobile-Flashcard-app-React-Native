@@ -1,29 +1,28 @@
-import {View, Text} from "react-native";
+import {View, Text, Alert} from "react-native";
 import React, {Component} from "react";
 import TextWithInput from "../components/input/TextWithInput";
 import Button from "../components/button/Button";
 import {bindActionCreators} from 'redux';
-import {newDeck, newDeckName} from "../stores/DeckStore";
+import {newDeck} from "../stores/DeckStore";
 import {connect} from 'react-redux';
 import {mapStateToProps} from "../stores/Store";
 
 class AddDeck extends Component {
-    onChangeAddDeck = (name) => {
-        const {decks = [], actions} = this.props;
-        const id = (decks.pop() || {id: -1}).id + 1 || 0;
-        actions.newDeck(id, name);
+    state = {
+        newDeckName: ''
     };
-    onNameChange = (name) => {
+    onChangeAddDeck = (name) => {
         const {actions} = this.props;
-        return actions.newDeckName(name);
+        // Alert.alert("Successfully added deck");
+        actions.newDeck(name);
     };
 
     render() {
-        let {newDeckName} = this.props;
+        let {newDeckName} = this.state;
         return (
             <View>
                 <Text>What is the title of your new deck?</Text>
-                <TextWithInput value={newDeckName} onChange={(text) => this.onNameChange(text)}
+                <TextWithInput value={newDeckName} onChange={(text) => this.setState({newDeckName:text})}
                                placeholder="Deck Title"/>
                 <Button onPress={() => this.onChangeAddDeck(newDeckName)}><Text>Create Deck</Text></Button>
             </View>
@@ -33,7 +32,7 @@ class AddDeck extends Component {
 
 const ActionCreators = Object.assign(
     {},
-    {newDeck, newDeckName},
+    {newDeck},
 );
 const mapDispatchToProps = dispatch => ({
     actions: bindActionCreators(ActionCreators, dispatch),
