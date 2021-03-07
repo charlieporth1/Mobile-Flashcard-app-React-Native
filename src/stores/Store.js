@@ -24,7 +24,7 @@ const enhancer = compose(
     //  autoRehydrate()
 );
 const rootReducer = combineReducers({
-    deckStore: persistReducer(persistConfig, deckReducer),
+    deckStore: deckReducer,
 });
 const persistedReducer = persistReducer(persistConfig, rootReducer);
 const configureStore = () => {

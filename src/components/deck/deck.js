@@ -5,11 +5,15 @@ import {
 } from 'react-native';
 import {padding} from "../../utils/utils";
 import Button from "../button/Button";
+import {connect} from "react-redux";
+import {mapStateToProps} from "../../stores/Store";
+import {selectDeck} from "../../stores/DeckStore";
+import {bindActionCreators} from "redux";
 
-const DeckStack = ({navigation, id, cardCount, actions}) => {
+const DeckStack = ({navigation, id, cardCount, onClickAction}) => {
     const onClick = () => {
-        actions.selectDeck(id);
-        setTimeout(() => navigation.navigate('ViewDeck'), 100)
+        onClickAction();
+        navigation.navigate('ViewDeck')
     };
 
     return (
@@ -45,5 +49,11 @@ const styles = StyleSheet.create({
         opacity: 1.0,
     },
 });
-
-export default DeckStack;
+const ActionCreators = Object.assign(
+    {},
+    {selectDeck},
+);
+const mapDispatchToProps = dispatch => ({
+    actions: bindActionCreators(ActionCreators, dispatch),
+});
+export default connect(mapStateToProps, mapDispatchToProps)(DeckStack);

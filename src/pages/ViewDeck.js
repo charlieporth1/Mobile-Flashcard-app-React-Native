@@ -16,7 +16,7 @@ class ViewDeck extends Component {
         const { currentDeck, navigation } = this.props;
         return (<View>
             <Button onPress={()=> navigation.navigate('AddCards')}><Text>Add Card</Text></Button>
-            <Button><Text>Start Quiz</Text></Button>
+            <Button onPress={()=> navigation.navigate('ViewQuestionPage')}><Text>Start Quiz</Text></Button>
             <Button><Text>Delete Deck</Text></Button>
         </View>);
     }

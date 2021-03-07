@@ -11,16 +11,20 @@ import {bindActionCreators} from "redux";
 
 class Home extends Component {
     render() {
-        const { decks = [], navigation, actions } = this.props;
+        const { decks = [], navigation } = this.props;
         return (
             <View>
                 {decks.length > 0 ? decks.map((deck) => {
-                        return <DeckStack key={deck.id} actions={actions} navigation={navigation} cardCount={deck.cards.length} id={deck.id}/>
+                        return <DeckStack key={deck.id} onClickAction={()=>this.onClick(deck.id)} navigation={navigation} cardCount={deck.cards.length} id={deck.id}/>
                     }) :
                     <Text>Zero decks added</Text>
                 }
             </View>
         );
+    }
+    onClick(deckId) {
+        const {actions} = this.props;
+        actions.selectDeck(deckId);
     }
 }
 
