@@ -7,8 +7,6 @@ import {padding} from "../../utils/utils";
 import Button from "../button/Button";
 import {connect} from "react-redux";
 import {mapStateToProps} from "../../stores/Store";
-import {selectDeck} from "../../stores/DeckStore";
-import {bindActionCreators} from "redux";
 
 const DeckStack = ({navigation, id, cardCount, onClickAction}) => {
     const onClick = () => {
@@ -50,11 +48,4 @@ const styles = StyleSheet.create({
         opacity: 1.0,
     },
 });
-const ActionCreators = Object.assign(
-    {},
-    {selectDeck},
-);
-const mapDispatchToProps = dispatch => ({
-    actions: bindActionCreators(ActionCreators, dispatch),
-});
-export default connect(mapStateToProps, mapDispatchToProps)(DeckStack);
+export default connect(mapStateToProps)(DeckStack);

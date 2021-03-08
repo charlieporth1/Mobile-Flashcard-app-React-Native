@@ -13,7 +13,7 @@ class AddDeck extends Component {
     };
     onChangeAddDeck = (name) => {
         const {actions} = this.props;
-        // Alert.alert("Successfully added deck");
+        Alert.alert("Successfully created deck");
         actions.newDeck(name);
     };
 

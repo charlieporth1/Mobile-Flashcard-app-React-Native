@@ -1,12 +1,13 @@
 import {createStore, combineReducers, applyMiddleware, compose} from 'redux';
-import { Platform } from 'react-native';
+import {Platform} from 'react-native';
 import autoMergeLevel1 from 'redux-persist/lib/stateReconciler/autoMergeLevel1'
-import { createLogger } from 'redux-logger'
+import {createLogger} from 'redux-logger'
 import thunk from 'redux-thunk';
 import AsyncStorage from '@react-native-community/async-storage';
 import DefaultStorage from 'redux-persist/lib/storage' // defaults to localStorage for web
-import { persistStore, persistReducer } from 'redux-persist'
+import {persistStore, persistReducer} from 'redux-persist'
 import {deckReducer} from "./DeckStore";
+
 let middleware = [];
 const storage = (Platform.OS === 'web') ? DefaultStorage : AsyncStorage;
 const persistConfig = {
@@ -33,7 +34,7 @@ const persistedReducer = persistReducer(persistConfig, rootReducer);
 const configureStore = () => {
     let store = createStore(persistedReducer, undefined, enhancer);
     let persistor = persistStore(store);
-    return { store, persistor }
+    return {store, persistor}
 };
 export default configureStore;
 export const mapStateToProps = state => {

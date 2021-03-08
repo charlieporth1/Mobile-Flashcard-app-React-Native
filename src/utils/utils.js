@@ -78,3 +78,6 @@ export const simpleSortDescending = (
 ): number => {
     return simpleSort(b, a);
 };
+export const arrayRemove = (self: any[], object: any): any[] => {
+    return self.filter((item) => object !== item);
+};
