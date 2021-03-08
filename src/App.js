@@ -14,9 +14,9 @@ const App = () => {
             mapStateToProps(newState);
         }
     };
+   store.subscribe(()=> onStateChange(store.getState()));
     return (
         <Provider store={store}>
-            {()=>store.subscribe(()=> onStateChange(store.getState()))}
             <PersistGate loading={null} persistor={persistor}>
             <NavigationContainer>
                 <BottomTabNavigation/>
