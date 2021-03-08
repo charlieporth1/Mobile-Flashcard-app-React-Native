@@ -64,4 +64,4 @@ buck-out/
 .expo/*
 web-build/
 
-third-party/*
+third-party/
