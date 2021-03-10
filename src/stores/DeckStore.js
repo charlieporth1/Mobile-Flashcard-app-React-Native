@@ -1,38 +1,42 @@
 import DeckModel from "../models/DeckModel";
 import CardModel from "../models/CardModel";
-import {NEW_DECK, SELECT_DECK, ADD_CARD, REMOVE_DECK} from "../static/constants";
+import {NEW_DECK, SELECT_DECK, ADD_CARD, REMOVE_DECK, NO_DECK} from "../static/constants";
 import {arrayRemove} from "../utils/utils";
+import ArrayExt from "../models/ArrayExt";
 
-const initialState = {decks: [], currentDeck: null};
+const initialState = {decks: ArrayExt, currentDeck: null, currentDeckId: 0};
 
 export function deckReducer(state = initialState, action) {
     console.log(action);
     switch (action.type) {
         case NEW_DECK:
             const {name} = action.payload;
-            const decks = state.decks;
+            const decks = ArrayExt.from(state.decks || []);
             const id = pushId(decks);
             decks.push(new DeckModel({id, name}));
             return {decks, ...state};
         case SELECT_DECK:
             const decks1 = state.decks;
             const {deckId} = action.payload;
-            const indexOfSelectedDeck = decks1.findIndex(deck => deck.id === deckId);
-            console.log("indexOfSelectedDeck", indexOfSelectedDeck)
-            const cd = decks1[indexOfSelectedDeck];
-            console.log("cd", cd)
-            return {currentDeck: cd, ...state};
-
+            if (parseInt(deckId) !== NO_DECK) {
+                const indexOfSelectedDeck = decks1.findIndex(deck => deck.id === deckId);
+                const cd = decks1[indexOfSelectedDeck];
+                console.debug("Selecting deck ", cd);
+                return {currentDeck: cd, currentDeckId: deckId, ...state};
+            } else {
+                console.debug("Setting currentDeck to null as deselecting deck has started");
+                return {currentDeck: null, currentDeckId: deckId, ...state};
+            }
         case ADD_CARD:
             const {question, answer} = action.payload;
             const currentDeck1 = state.currentDeck;
-            currentDeck1.cards = [...(currentDeck1.cards || []), new CardModel({question, answer})];
+            const currentCards = (currentDeck1 || {cards: []}).cards || [];
+            currentDeck1.cards = [...currentCards, new CardModel({question, answer})];
             return {currentDeck: currentDeck1, decks: mergeDecks(state.decks, currentDeck1), ...state};
         case REMOVE_DECK:
             const indexOfSelectedDeck2 = state.decks.findIndex(deck => deck.id === action.payload.deckId);
             const currentDeck2 = state.decks[indexOfSelectedDeck2];
-            console.log("state.currentDeck currentDeck2 ,action.payload", state.currentDeck, currentDeck2, action.payload)
-            const deletedDeckArray = arrayRemove(state.decks, state.currentDeck);
+            const deletedDeckArray = arrayRemove(state.decks, currentDeck2);
             return {decks: deletedDeckArray, currentDeck: null, ...state};
         default:
             return state
@@ -40,9 +44,13 @@ export function deckReducer(state = initialState, action) {
 
 }
 
-const pushId = (decks) => {
-    const id = (decks || {id: -1}).id + 1 || 0;
-    return id;
+const pushId = (decks: ArrayExt) => {
+
+    if (decks) {
+        const id = (decks.last(false) || new DeckModel({})).id + 1 || 1;
+        return id;
+    }
+    return 1;
 };
 const mergeDecks = (deckArray: [], newDeck) => {
     const newDeckArray = deckArray.filter((deck) => deck.id !== newDeck.id);

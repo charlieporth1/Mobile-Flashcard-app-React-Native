@@ -1,7 +1,7 @@
 import CardModel from "./CardModel";
 
 export default class DeckModel {
-    id:number = 0;
+    id:number = 0 || 0;
     name:string = '';
     cards:CardModel[] = [];
 
@@ -11,8 +11,8 @@ export default class DeckModel {
             name = 'Deck',
             cards = []
         } = param;
-        this.id = id;
-        this.name = name;
+        this.id = parseInt(id) || 0; //Bug where int was a str for some reason
+        this.name = name ;
         this.cards = cards;
     }
 }

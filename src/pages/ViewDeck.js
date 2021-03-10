@@ -9,17 +9,10 @@ import {connect} from "react-redux";
 import {mapStateToProps} from "../stores/Store";
 import {removeDeck, selectDeck} from "../stores/DeckStore";
 import {bindActionCreators} from "redux";
-
 class ViewDeck extends Component {
-    componentWillUnmount(): void {
-        const {actions} = this.props;
-        actions.selectDeck(null);
-    }
-
     deleteDeck = () => {
         const {currentDeck, actions, navigation} = this.props;
         const id = currentDeck.id;
-        console.log("id", id);
         actions.removeDeck(id);
         Alert.alert("Successfully deleted deck");
         navigation.navigate('Home');
@@ -39,6 +32,7 @@ class ViewDeck extends Component {
             </Button>
         </View>);
     }
+
 }
 
 const ActionCreators = Object.assign(

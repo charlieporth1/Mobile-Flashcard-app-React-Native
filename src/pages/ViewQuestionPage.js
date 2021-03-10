@@ -19,9 +19,10 @@ class ViewQuestionPage extends Component {
     render() {
         const {currentDeck} = this.props;
         const {isViewAnswer} = this.state;
-        const cards = (currentDeck || {cards: []}).cards || [];
-        if ((cards) && cards.length > 0) {
-            const index  = randomNumber(0, cards.length - 1);
+        const cards = ArrayExt.from((currentDeck || {cards: []}).cards || []);
+        console.log("currentDeck", currentDeck);
+        if (!cards.isEmpty) {
+            const index = randomNumber(0, cards.length - 1);
             const currentCard = cards[index];
             return <View>
                 <Text>{currentCard.question}</Text>

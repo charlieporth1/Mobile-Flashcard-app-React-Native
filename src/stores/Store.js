@@ -39,6 +39,6 @@ const configureStore = () => {
 export default configureStore;
 export const mapStateToProps = state => {
     const {deckStore} = state;
-    const {decks, currentDeck} = deckStore;
-    return {deckStore, decks, currentDeck}
+    const {decks, currentDeck, currentDeckId} = deckStore;
+    return {deckStore, decks, currentDeck, currentDeckId}
 };

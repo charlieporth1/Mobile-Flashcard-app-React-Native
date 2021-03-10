@@ -6,15 +6,8 @@ import { PersistGate } from 'redux-persist/integration/react';
 
 import configureStore, {mapStateToProps} from "./stores/Store";
 const {store, persistor} = configureStore();
-let oldStateGlobal = null;
+// persistor.purge();
 const App = () => {
-    const onStateChange = (newState) => {
-        if (JSON.stringify(newState) !== JSON.stringify(oldStateGlobal)) {
-            oldStateGlobal = newState;
-            mapStateToProps(newState);
-        }
-    };
-   store.subscribe(()=> onStateChange(store.getState()));
     return (
         <Provider store={store}>
             <PersistGate loading={null} persistor={persistor}>

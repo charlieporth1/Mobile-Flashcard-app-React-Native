@@ -24,9 +24,11 @@ class AddCards extends Component {
     onSubmit = () => {
         const {actions, navigation} = this.props;
         const {answer, question} = this.state;
-        actions.addCards(question,answer);
-        Alert.alert("Successfully added card");
-        navigation.navigate('ViewDeck')
+        actions.addCards(question, answer);
+        setTimeout(() => {
+            Alert.alert("Successfully added card");
+            navigation.navigate('ViewDeck')
+        }, 100);
 
     };
 
@@ -40,6 +42,7 @@ class AddCards extends Component {
     }
 
 }
+
 const ActionCreators = Object.assign(
     {},
     {addCards},
