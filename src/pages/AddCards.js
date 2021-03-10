@@ -4,7 +4,7 @@ import {
     Text, Alert,
 } from 'react-native';
 import TextWithInput from "../components/input/TextWithInput";
-import {addCards} from "../stores/DeckStore";
+import {addCards, selectDeck} from "../stores/DeckStore";
 import {bindActionCreators} from "redux";
 import {connect} from "react-redux";
 import {mapStateToProps} from "../stores/Store";
@@ -31,6 +31,11 @@ class AddCards extends Component {
         }, 100);
 
     };
+    componentDidMount(): void {
+        const {actions,route} = this.props;
+        const id = route.params.id;
+        actions.selectDeck(id);
+    }
 
     render(): React.ReactElement<any> | string | number | {} | React.ReactNodeArray | React.ReactPortal | boolean | null | undefined {
         const {answer, question} = this.state;
@@ -45,7 +50,7 @@ class AddCards extends Component {
 
 const ActionCreators = Object.assign(
     {},
-    {addCards},
+    {addCards, selectDeck},
 );
 const mapDispatchToProps = dispatch => ({
     actions: bindActionCreators(ActionCreators, dispatch),

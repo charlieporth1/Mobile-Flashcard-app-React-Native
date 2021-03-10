@@ -5,8 +5,6 @@ import {
 } from 'react-native';
 import {padding} from "../../utils/utils";
 import Button from "../button/Button";
-import {connect} from "react-redux";
-import {mapStateToProps} from "../../stores/Store";
 
 const DeckStack = ({navigation, deck, onClickAction}) => {
     const onClick = () => {
@@ -50,4 +48,4 @@ const styles = StyleSheet.create({
 
     },
 });
-export default connect(mapStateToProps)(DeckStack);
+export default (DeckStack);

@@ -1,3 +1,4 @@
+import '../utils/prototypes';
 import {createStore, combineReducers, applyMiddleware, compose} from 'redux';
 import {Platform} from 'react-native';
 import autoMergeLevel1 from 'redux-persist/lib/stateReconciler/autoMergeLevel1'

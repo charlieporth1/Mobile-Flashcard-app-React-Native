@@ -2,16 +2,16 @@ import DeckModel from "../models/DeckModel";
 import CardModel from "../models/CardModel";
 import {NEW_DECK, SELECT_DECK, ADD_CARD, REMOVE_DECK, NO_DECK} from "../static/constants";
 import {arrayRemove} from "../utils/utils";
-import ArrayExt from "../models/ArrayExt";
+import '../utils/prototypes';
 
-const initialState = {decks: ArrayExt, currentDeck: null, currentDeckId: 0};
+const initialState = {decks: [], currentDeck: null, currentDeckId: 0};
 
 export function deckReducer(state = initialState, action) {
     console.log(action);
     switch (action.type) {
         case NEW_DECK:
             const {name} = action.payload;
-            const decks = ArrayExt.from(state.decks || []);
+            const decks = state.decks || [];
             const id = pushId(decks);
             decks.push(new DeckModel({id, name}));
             return {decks, ...state};
@@ -20,15 +20,16 @@ export function deckReducer(state = initialState, action) {
             const {deckId} = action.payload;
             if (parseInt(deckId) !== NO_DECK) {
                 const indexOfSelectedDeck = decks1.findIndex(deck => deck.id === deckId);
-                const cd = decks1[indexOfSelectedDeck];
-                console.debug("Selecting deck ", cd);
-                return {currentDeck: cd, currentDeckId: deckId, ...state};
+                const currentDeck = decks1[indexOfSelectedDeck];
+                console.debug("Selecting currentDeck.id ", currentDeck.id);
+                return {currentDeck, currentDeckId: deckId, ...state};
             } else {
                 console.debug("Setting currentDeck to null as deselecting deck has started");
                 return {currentDeck: null, currentDeckId: deckId, ...state};
             }
         case ADD_CARD:
             const {question, answer} = action.payload;
+            console.log("state.currentDeck", state.currentDeck)
             const currentDeck1 = state.currentDeck;
             const currentCards = (currentDeck1 || {cards: []}).cards || [];
             currentDeck1.cards = [...currentCards, new CardModel({question, answer})];
@@ -44,10 +45,9 @@ export function deckReducer(state = initialState, action) {
 
 }
 
-const pushId = (decks: ArrayExt) => {
-
+const pushId = (decks: []) => {
     if (decks) {
-        const id = (decks.last(false) || new DeckModel({})).id + 1 || 1;
+        const id = (decks.last(true) || new DeckModel({})).id + 1 || 1;
         return id;
     }
     return 1;

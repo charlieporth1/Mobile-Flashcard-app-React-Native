@@ -9,7 +9,7 @@ import {connect} from 'react-redux';
 import {selectDeck} from "../stores/DeckStore";
 import {bindActionCreators} from "redux";
 import {NO_DECK} from "../static/constants";
-import ArrayExt from "../models/ArrayExt";
+import '../utils/prototypes';
 
 class Home extends Component {
     resetCurrentDeck = () => {
@@ -22,10 +22,10 @@ class Home extends Component {
     }
 
     render() {
-        const {decks = new  ArrayExt, navigation} = this.props;
+        const {decks = [],navigation} = this.props;
         return (
             <View>
-                {!decks.isEmpty  ? decks.map((deck) => {
+                {!decks.isEmpty ? decks.map((deck) => {
                         return <DeckStack key={deck.id}
                                           onClickAction={() => this.onClick(deck.id)}
                                           navigation={navigation}
