@@ -18,15 +18,15 @@ export function deckReducer(state = initialState, action) {
         case SELECT_DECK:
             const decks1 = state.decks;
             const {deckId} = action.payload;
-            if (parseInt(deckId) !== NO_DECK) {
+            // if (parseInt(deckId) !== NO_DECK) {
                 const indexOfSelectedDeck = decks1.findIndex(deck => deck.id === deckId);
                 const currentDeck = decks1[indexOfSelectedDeck];
                 console.debug("Selecting currentDeck.id ", currentDeck.id);
                 return {currentDeck, currentDeckId: deckId, ...state};
-            } else {
-                console.debug("Setting currentDeck to null as deselecting deck has started");
-                return {currentDeck: null, currentDeckId: deckId, ...state};
-            }
+            // } else {
+            //     console.debug("Setting currentDeck to null as deselecting deck has started");
+            //     return {currentDeck: null, currentDeckId: deckId, ...state};
+            // }
         case ADD_CARD:
             const {question, answer} = action.payload;
             console.log("state.currentDeck", state.currentDeck)

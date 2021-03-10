@@ -3,11 +3,11 @@
   "scripts": {
     "android": "react-native run-android",
     "podinstall": "cd ios && pod install --repo-update && cd -",
-    "ios": "yarn run podinstall && expo start --ios  --localhost --config app.json --clear ",
+    "ios": "react-native run-ios",
     "web": "expo start --web --localhost",
     "xcode": "open ./ios/Mobileflashcardapp.xcworkspace || open ./ios/Mobileflashcardapp.xcodeproj",
     "start:native": "react-native start --reset-cache",
-    "start": "expo start --clear ",
+    "start": "react-native start",
     "clean:xcode": "rm -rf ~/Library/Developer/Xcode/DerivedData/ && cd ios && rm -rf Pods/ && cd ..",
     "clean:metro": "watchman watch-del-all && rm -rf /tmp/metro-*",
     "clean": "yarn run clean:metro && yarn run clean:xcode && rm -rf node_modules/",
@@ -28,11 +28,11 @@
     "expo": "^40.0.1",
     "expo-splash-screen": "~0.8.1",
     "expo-status-bar": "^1.0.3",
-    "expo-updates": "^0.4.2",
+    "expo-updates": "~0.4.0",
     "jsdom": "16.4.0",
-    "react": "~16.13.1",
+    "react": "16.13.1",
     "react-dom": "~16.9.0",
-    "react-native": "^0.63.4",
+    "react-native": "~0.63.4",
     "react-native-gesture-handler": "^1.5.6",
     "react-native-pod": "^1.12.1",
     "react-native-reanimated": "~1.13.0",
@@ -60,5 +60,7 @@
   "jest": {
     "preset": "react-native"
   },
-  "private": true
+  "private": true,
+  "name": "Mobile-flash-card-app",
+  "version": "1.0.0"
 }

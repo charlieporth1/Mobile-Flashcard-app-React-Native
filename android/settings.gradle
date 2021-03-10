@@ -1,4 +1,4 @@
-rootProject.name = 'Mobileflashcardapp'
+rootProject.name = 'Mobile-flash-card-app'
 
 apply from: '../node_modules/react-native-unimodules/gradle.groovy'
 includeUnimodulesProjects()

@@ -312,12 +312,13 @@
 					"-ObjC",
 					"-lc++",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = org.name.Mobileflashcardapp;
-				PRODUCT_NAME = Mobileflashcardapp;
+				PRODUCT_BUNDLE_IDENTIFIER = "dev.ctptech.flashcards";
+				PRODUCT_NAME = flashcards;
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = 1;
+				TARGETED_DEVICE_FAMILY = "1";
 				VERSIONING_SYSTEM = "apple-generic";
+				CODE_SIGN_ENTITLEMENTS = Mobileflashcardapp/flashcards.entitlements;
 			};
 			name = Debug;
 		};
@@ -338,11 +339,12 @@
 					"-ObjC",
 					"-lc++",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = org.name.Mobileflashcardapp;
-				PRODUCT_NAME = Mobileflashcardapp;
+				PRODUCT_BUNDLE_IDENTIFIER = "dev.ctptech.flashcards";
+				PRODUCT_NAME = flashcards;
 				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = 1;
+				TARGETED_DEVICE_FAMILY = "1";
 				VERSIONING_SYSTEM = "apple-generic";
+				CODE_SIGN_ENTITLEMENTS = Mobileflashcardapp/flashcards.entitlements;
 			};
 			name = Release;
 		};
@@ -403,6 +405,7 @@
 				MTL_ENABLE_DEBUG_INFO = YES;
 				ONLY_ACTIVE_ARCH = YES;
 				SDKROOT = iphoneos;
+				CODE_SIGN_ENTITLEMENTS = Mobileflashcardapp/flashcards.entitlements;
 			};
 			name = Debug;
 		};
@@ -456,6 +459,7 @@
 				MTL_ENABLE_DEBUG_INFO = NO;
 				SDKROOT = iphoneos;
 				VALIDATE_PRODUCT = YES;
+				CODE_SIGN_ENTITLEMENTS = Mobileflashcardapp/flashcards.entitlements;
 			};
 			name = Release;
 		};

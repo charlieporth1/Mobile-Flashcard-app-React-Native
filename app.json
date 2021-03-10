@@ -7,6 +7,12 @@
     "version": "1.0.0",
     "assetBundlePatterns": [
       "**/*"
-    ]
+    ],
+    "android": {
+      "package": "dev.ctptech.flashcards"
+    },
+    "ios": {
+      "bundleIdentifier": "dev.ctptech.flashcards"
+    }
   }
 }

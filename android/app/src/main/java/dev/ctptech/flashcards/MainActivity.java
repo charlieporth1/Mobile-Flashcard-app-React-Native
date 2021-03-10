@@ -1,4 +1,4 @@
-package com.mobileflashcardapp;
+package dev.ctptech.flashcards;
 
 import android.os.Bundle;
 
