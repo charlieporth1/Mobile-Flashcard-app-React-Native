@@ -3,7 +3,7 @@ iOS and Android have been test
 This is a bare bones app
 # Running 
 You need expo for this project
-To get Expo `yarn install -g expo-cli`
+To get Expo `npm install -g react-native || yarn add global react-native`
 
 ios `yarn run ios`
 Android `yarn run android`

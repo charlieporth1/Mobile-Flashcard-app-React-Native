@@ -3,15 +3,16 @@
   "scripts": {
     "android": "react-native run-android",
     "podinstall": "cd ios && pod install --repo-update && cd -",
-    "ios": "react-native run-ios",
+    "ios": "yarn run podinstall && react-native run-ios",
     "web": "expo start --web --localhost",
     "xcode": "open ./ios/Mobileflashcardapp.xcworkspace || open ./ios/Mobileflashcardapp.xcodeproj",
     "start:native": "react-native start --reset-cache",
     "start": "react-native start",
-    "clean:xcode": "rm -rf ~/Library/Developer/Xcode/DerivedData/ && cd ios && rm -rf Pods/ && cd ..",
+    "clean:xcode": "rm -rf ~/Library/Developer/Xcode/DerivedData/ && cd ios && rm -rf Pods/ &&  xcodebuild clean && cd ..",
     "clean:metro": "watchman watch-del-all && rm -rf /tmp/metro-*",
+    "clean:yarn": " yarn cache clean",
     "clean": "yarn run clean:metro && yarn run clean:xcode && rm -rf node_modules/",
-    "clean-start": "yarn run clean && yarn install && yarn start",
+    "clean-start": "yarn run clean:yarn && yarn run clean && yarn install && yarn start",
     "test": "jest"
   },
   "dependencies": {
@@ -25,10 +26,6 @@
     "babel-preset-expo": "^8.3.0",
     "bufferutil": "^4.0.1",
     "canvas": "^2.5.0",
-    "expo": "^40.0.1",
-    "expo-splash-screen": "~0.8.1",
-    "expo-status-bar": "^1.0.3",
-    "expo-updates": "~0.4.0",
     "jsdom": "16.4.0",
     "react": "16.13.1",
     "react-dom": "~16.9.0",
@@ -44,9 +41,9 @@
     "react-redux": "^7.2.2",
     "redux": "^4.0.5",
     "redux-persist": "^6.0.0",
+    "redux-thunk": "^2.3.0",
     "utf-8-validate": "^5.0.2",
-    "ws": "7.4.3",
-    "redux-thunk": "latest"
+    "ws": "7.4.3"
   },
   "devDependencies": {
     "@babel/core": "^7.9.6",
