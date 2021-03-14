@@ -90,11 +90,11 @@ static void InitializeFlipper(UIApplication *application) {
  #endif
 }
 
-- (void)appController:(EXUpdatesAppController *)appController didStartWithSuccess:(BOOL)success {
-  appController.bridge = [self initializeReactNativeApp];
+//- (void)appController:(EXUpdatesAppController *)appController didStartWithSuccess:(BOOL)success {
+//  appController.bridge = [self initializeReactNativeApp];
 //  EXSplashScreenService *splashScreenService = (EXSplashScreenService *)[UMModuleRegistryProvider getSingletonModuleForClass:[EXSplashScreenService class]];
 //  [splashScreenService showSplashScreenFor:self.window.rootViewController];
-}
+//}
 
 // Linking API
 - (BOOL)application:(UIApplication *)application openURL:(NSURL *)url options:(NSDictionary<UIApplicationOpenURLOptionsKey,id> *)options {

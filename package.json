@@ -8,7 +8,7 @@
     "xcode": "open ./ios/Mobileflashcardapp.xcworkspace || open ./ios/Mobileflashcardapp.xcodeproj",
     "start:native": "react-native start --reset-cache",
     "start": "react-native start",
-    "clean:xcode": "rm -rf ~/Library/Developer/Xcode/DerivedData/ && cd ios && rm -rf Pods/ &&  xcodebuild clean && cd ..",
+    "clean:xcode": "rm -rf ~/Library/Developer/Xcode/DerivedData/* && cd ios && rm -rf Pods/ &&  xcodebuild clean && cd ..",
     "clean:metro": "watchman watch-del-all && rm -rf /tmp/metro-*",
     "clean:yarn": " yarn cache clean",
     "clean": "yarn run clean:metro && yarn run clean:xcode && rm -rf node_modules/",
