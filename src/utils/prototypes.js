@@ -31,8 +31,7 @@ Array.prototype.isEmpty =
     const array = this || [];
     return (array.length === 0)
 }
-    Object.defineProperty(Array.prototype, 'isEmpty', {
- value:false,       get: function(): boolean {
+    Object.defineProperty(Array.prototype, 'isEmpty', {get: function(): boolean {
             const array = this || [];
             return (array.length === 0)
         }, enumerable: false});

@@ -21,7 +21,7 @@ export function deckReducer(state = initialState, action) {
             // if (parseInt(deckId) !== NO_DECK) {
                 const indexOfSelectedDeck = decks1.findIndex(deck => deck.id === deckId);
                 const currentDeck = decks1[indexOfSelectedDeck];
-                console.debug("Selecting currentDeck.id ", currentDeck.id);
+                console.debug("Selecting currentDeck.id ", (currentDeck || {id: -1}).id);
                 return {currentDeck, currentDeckId: deckId, ...state};
             // } else {
             //     console.debug("Setting currentDeck to null as deselecting deck has started");
