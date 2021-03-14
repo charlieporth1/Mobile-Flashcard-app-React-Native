@@ -13,7 +13,8 @@ import Button from "../components/button/Button";
 class AddCards extends Component {
     state = {
         answer: '',
-        question: ''
+        question: '',
+        currentDeck:undefined,
     };
     onAnswer = (answer) => {
         this.setState({answer});
@@ -23,8 +24,10 @@ class AddCards extends Component {
     };
     onSubmit = () => {
         const {actions, navigation} = this.props;
-        const {answer, question} = this.state;
-        actions.addCards(question, answer);
+        const {answer, question, currentDeck} = this.state;
+        const id = currentDeck.id;
+        actions.selectDeck(id);
+        actions.addCards(question, answer, id);
         setTimeout(() => {
             Alert.alert("Successfully added card");
             navigation.navigate('ViewDeck')
@@ -33,8 +36,9 @@ class AddCards extends Component {
     };
     componentDidMount(): void {
         const {actions,route} = this.props;
-        const id = route.params.id;
+        const {id, currentDeck} = route.params;
         actions.selectDeck(id);
+        this.setState({currentDeck})
     }
 
     render(): React.ReactElement<any> | string | number | {} | React.ReactNodeArray | React.ReactPortal | boolean | null | undefined {

@@ -7,15 +7,15 @@ import {padding} from "../../utils/utils";
 import Button from "../button/Button";
 
 const DeckStack = ({navigation, deck, onClickAction}) => {
-    const onClick = () => {
-        onClickAction();
-        setTimeout(()=> navigation.navigate('ViewDeck'),100);
-
-    };
-    const name = deck.name || '';
     const id = deck.id || '';
+    const name = deck.name || '';
     const cards = (deck || {cards: []}).cards || [];
     const cardCount = cards.length || 0;
+    const onClick = () => {
+        onClickAction();
+        setTimeout(()=> navigation.navigate('ViewDeck', {id, deck}),100);
+
+    };
     return (
         <Button onPress={onClick} style={{...styles.containerView}}>
             <View style={{...styles.maxWidth, ...styles.block, backgroundColor: 'blue'}}>

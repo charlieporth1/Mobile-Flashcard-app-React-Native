@@ -14,11 +14,11 @@ import '../utils/prototypes';
 class Home extends Component {
     resetCurrentDeck = () => {
         const {actions} = this.props;
-        actions.selectDeck(NO_DECK);
+        // actions.selectDeck(NO_DECK);
     };
 
     componentDidMount(): void {
-        this.resetCurrentDeck();
+        // this.resetCurrentDeck();
     }
 
     render() {
@@ -39,10 +39,8 @@ class Home extends Component {
 
     onClick(deckId) {
         this.resetCurrentDeck();
-        setTimeout(() => {
             const {actions} = this.props;
             actions.selectDeck(deckId);
-        }, 100);
     }
 }
 

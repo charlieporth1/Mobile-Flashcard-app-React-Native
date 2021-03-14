@@ -30,10 +30,11 @@ export function deckReducer(state = initialState, action) {
         case ADD_CARD:
             const {question, answer} = action.payload;
             console.log("state.currentDeck", state.currentDeck)
-            const currentDeck1 = state.currentDeck;
-            const currentCards = (currentDeck1 || {cards: []}).cards || [];
-            currentDeck1.cards = [...currentCards, new CardModel({question, answer})];
-            return {currentDeck: currentDeck1, decks: mergeDecks(state.decks, currentDeck1), ...state};
+            const indexOfSelectedDeck3 = state.decks.findIndex(deck => deck.id === action.payload.id);
+            const currentDeck3 = state.decks[indexOfSelectedDeck3];
+            const currentCards = (currentDeck3 || {cards: []}).cards || [];
+            currentDeck3.cards = [...currentCards, new CardModel({question, answer})];
+            return {currentDeck: currentDeck3, decks: mergeDecks(state.decks, currentDeck3), ...state};
         case REMOVE_DECK:
             const indexOfSelectedDeck2 = state.decks.findIndex(deck => deck.id === action.payload.deckId);
             const currentDeck2 = state.decks[indexOfSelectedDeck2];
@@ -46,8 +47,8 @@ export function deckReducer(state = initialState, action) {
 }
 
 const pushId = (decks: []) => {
-    if (decks) {
-        const id = (decks.last(true) || new DeckModel({})).id + 1 || 1;
+    if (decks && decks.length > 0) {
+        const id = (decks.last).id + 1;
         return id;
     }
     return 1;
@@ -79,10 +80,10 @@ export function removeDeck(deckId: number) {
     }
 }
 
-export function addCards(question: string, answer: string) {
+export function addCards(question: string, answer: string, id:number) {
     return {
         type: ADD_CARD,
-        payload: {question, answer},
+        payload: {question, answer, id},
     }
 }
 

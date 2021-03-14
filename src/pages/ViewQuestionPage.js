@@ -13,26 +13,29 @@ import {bindActionCreators} from "redux";
 
 class ViewQuestionPage extends Component {
     state = {
-        isViewAnswer: false
+        isViewAnswer: false,
+        currentDeck:undefined,
     };
     toggleViewAnswer = () => {
         this.setState({isViewAnswer: !this.state.isViewAnswer})
     };
     componentDidMount(): void {
         const {actions, route} = this.props;
-        const id = route.params.id;
+        const {id, currentDeck} = route.params;
         actions.selectDeck(id);
+        this.setState({currentDeck})
     }
     render() {
-        const {currentDeck} = this.props;
-        const {isViewAnswer} = this.state;
-        const cards = (currentDeck || {cards: []}.cards);
-        console.log("currentDeck", currentDeck);
+        const {isViewAnswer, currentDeck} = this.state;
+        const cards = (currentDeck || {cards: []}).cards;
+        console.log("currentDeck, cards", currentDeck, cards);
         if ((currentDeck) && !cards.isEmpty) {
-            const index = randomNumber(0, cards.length - 1);
-            const currentCard = cards[index];
+            const index = randomNumber(0, cards.length - 1) || 0;
+            console.log(index)
+            const currentCard = cards[0];
+            console.log("currentCard",currentCard)
             return <View>
-                <Text>{currentCard.question}</Text>
+                <Text>{currentCard.question || ''}</Text>
                 <Button onPress={this.toggleViewAnswer}>
                     <Text>Click to view Answer</Text>
                 </Button>

@@ -23,11 +23,8 @@ Array.prototype.unique = function () {
 
     return a;
 };
-export const randomNumber = (min: number, max: number): number => {
-    min = Math.ceil(min);
-    max = Math.floor(max);
-    return Math.floor(Math.random() * (max - min + 1)) + min;
-};
+export const randomNumber = (min: number, max: number): number =>
+    Math.floor(Math.random() * (max - min) + min);
 export const simpleSort = (a: any, b: any): number => {
     const simpleCompare = (
         a: any,
