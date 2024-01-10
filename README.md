@@ -1,6 +1,6 @@
 # Mobile-Flashcard-app-React-Native
 iOS and Android have been test 
-This is a bare bones app
+This is a bare bones app.
 Udactiy NanoDegree Intro to React project
 # Running 
 You need expo for this project
