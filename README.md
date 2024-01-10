@@ -1,6 +1,7 @@
 # Mobile-Flashcard-app-React-Native
 iOS and Android have been test 
 This is a bare bones app
+Udactiy NanoDegree Intro to React project
 # Running 
 You need expo for this project
 To get Expo `npm install -g react-native || yarn add global react-native`
